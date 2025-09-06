@@ -1451,15 +1451,20 @@ async function updateLobby() {
 let quizStartedInterval = null;
 
 function startLobbyPolling() {
+    if (quizStartedInterval) clearInterval(quizStartedInterval);
     quizStartedInterval = setInterval(async () => {
-        const res = await fetch(`${API_BASE}/room/${roomCode}/status`);
-        const data = await res.json();
-        if (data.started) {
-            clearInterval(quizStartedInterval);
-            lobbyScreen.classList.add('hidden');
-            quizScreen.classList.remove('hidden');
-            await fetchQuestions();
-            showQuestion(0);
+        try {
+            const res = await fetch(`${API_BASE}/room/${roomCode}/status`);
+            const data = await res.json();
+            if (data.started) {
+                clearInterval(quizStartedInterval);
+                lobbyScreen.classList.add('hidden');
+                quizScreen.classList.remove('hidden');
+                await fetchQuestions();
+                showQuestion(0);
+            }
+        } catch (err) {
+            // Optionally show error
         }
     }, 2000);
 }
@@ -1469,6 +1474,7 @@ startQuizBtn.onclick = async () => {
     startQuizBtn.disabled = true;
     showLoading(startQuizBtn, true);
     try {
+        await fetch(`${API_BASE}/room/${roomCode}/start`, { method: "POST" });
         lobbyScreen.classList.add('hidden');
         quizScreen.classList.remove('hidden');
         await fetchQuestions();
