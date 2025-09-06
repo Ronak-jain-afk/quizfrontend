@@ -1078,22 +1078,22 @@
                 
                 <h3 class="text-center mt-20">Select Topic</h3>
                 <div class="option-grid" id="topic-grid">
-                    <div class="option-card glass-card" data-topic="c-basics">
+                    <div class="option-card glass-card" data-topic="c">
                         <div class="option-icon"><i class="fab fa-cuttlefish"></i></div>
                         <h3 class="option-title">C Basics</h3>
                         <p>Fundamentals of C programming</p>
                     </div>
-                    <div class="option-card glass-card" data-topic="java-basics">
+                    <div class="option-card glass-card" data-topic="java">
                         <div class="option-icon"><i class="fab fa-java"></i></div>
                         <h3 class="option-title">Java Basics</h3>
                         <p>Core Java concepts</p>
                     </div>
-                    <div class="option-card glass-card" data-topic="python-basics">
+                    <div class="option-card glass-card" data-topic="python">
                         <div class="option-icon"><i class="fab fa-python"></i></div>
                         <h3 class="option-title">Python Basics</h3>
                         <p>Python programming fundamentals</p>
                     </div>
-                    <div class="option-card glass-card" data-topic="networks">
+                    <div class="option-card glass-card" data-topic="network">
                         <div class="option-icon"><i class="fas fa-network-wired"></i></div>
                         <h3 class="option-title">Computer Networks</h3>
                         <p>Networking basics and protocols</p>
@@ -1445,6 +1445,23 @@ async function updateLobby() {
         showError("Could not update lobby. Backend unreachable.");
         updateConnectionStatus('disconnected');
     }
+}
+
+// Add this polling in lobby screen for all players
+let quizStartedInterval = null;
+
+function startLobbyPolling() {
+    quizStartedInterval = setInterval(async () => {
+        const res = await fetch(`${API_BASE}/room/${roomCode}/status`);
+        const data = await res.json();
+        if (data.started) {
+            clearInterval(quizStartedInterval);
+            lobbyScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            await fetchQuestions();
+            showQuestion(0);
+        }
+    }, 2000);
 }
 
 // Start Quiz
