@@ -1569,6 +1569,8 @@ async function updateLeaderboard() {
         const res = await fetch(`${API_BASE}/room/${roomCode}/players`);
         if (!res.ok) throw new Error("Leaderboard fetch failed");
         const players = await res.json();
+
+        // Quiz screen sidebar leaderboard
         leaderboardList.innerHTML = "";
         players.sort((a, b) => b.score - a.score);
         players.forEach((p, i) => {
@@ -1577,6 +1579,17 @@ async function updateLeaderboard() {
             div.innerHTML = `<span>${i + 1}. ${p.user}</span><span>${p.score} pts</span>`;
             leaderboardList.appendChild(div);
         });
+
+        // Results screen leaderboard
+        const finalLeaderboard = document.getElementById('final-leaderboard');
+        finalLeaderboard.innerHTML = "";
+        players.forEach((p, i) => {
+            const div = document.createElement('div');
+            div.className = 'leaderboard-item' + (p.user === playerName ? ' current-user' : '');
+            div.innerHTML = `<span>${i + 1}. ${p.user}</span><span>${p.score} pts</span>`;
+            finalLeaderboard.appendChild(div);
+        });
+
         updateConnectionStatus('connected');
     } catch (err) {
         showError("Could not update leaderboard.");
