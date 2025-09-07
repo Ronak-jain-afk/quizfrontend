@@ -1555,12 +1555,24 @@ async function submitAnswers() {
     }
 }
 
-// Show results
+// Polling interval for leaderboard updates
+let leaderboardPollInterval = null;
+
 function showResults(result) {
     resultsScreen.classList.remove('hidden');
     quizScreen.classList.add('hidden');
     document.querySelector('.results-title').textContent =
         `${result.user}, your score: ${result.score} / ${result.total}`;
+    updateLeaderboard();
+
+    // Start polling leaderboard for 20 seconds so late finishers appear
+    if (leaderboardPollInterval) clearInterval(leaderboardPollInterval);
+    let pollCount = 0;
+    leaderboardPollInterval = setInterval(() => {
+        updateLeaderboard();
+        pollCount++;
+        if (pollCount > 20) clearInterval(leaderboardPollInterval); // Stop after 20 seconds
+    }, 1000);
 }
 
 // Update leaderboard
