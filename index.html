@@ -42,6 +42,34 @@
             overflow-x: hidden;
         }
 
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .home-title {
+                font-size: 2.5rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .action-buttons .glass-button {
+                width: 100%;
+            }
+            
+            .option-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 10px;
+            }
+        }
+
         /* Liquid background animation */
         .liquid-bg {
             position: fixed;
