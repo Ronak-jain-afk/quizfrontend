@@ -1351,6 +1351,7 @@ createRoomBtn.onclick = async () => {
         showSuccess("Room created! Share the code with friends.");
         updateLobby();
         lobbyInterval = setInterval(updateLobby, 3000);
+        startLobbyPolling();
     } catch (err) {
         showError("Could not create room. Please try again.");
         updateConnectionStatus('disconnected');
@@ -1380,6 +1381,7 @@ joinRoomBtn.onclick = async () => {
         showSuccess("Joined room successfully!");
         updateLobby();
         lobbyInterval = setInterval(updateLobby, 3000);
+        startLobbyPolling();
     } else {
         showError(result.message);
         updateConnectionStatus('disconnected');
@@ -1505,6 +1507,10 @@ async function fetchQuestions() {
     }
 }
 
+// Timer variables
+let timeLeft = 30;
+let timerInterval = null;
+
 // Show question
 function showQuestion(index) {
     if (index >= questionsArray.length) {
@@ -1522,10 +1528,24 @@ function showQuestion(index) {
         btn.textContent = opt;
         btn.onclick = () => {
             userAnswers[q.id] = opt;
+            clearInterval(timerInterval); // Stop timer on answer
             showQuestion(index + 1);
         };
         optionsGrid.appendChild(btn);
     });
+
+    // Timer logic
+    timeLeft = 30;
+    document.getElementById('timer').textContent = `00:${timeLeft < 10 ? '0' : ''}${timeLeft}`;
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer').textContent = `00:${timeLeft < 10 ? '0' : ''}${timeLeft}`;
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            showQuestion(index + 1);
+        }
+    }, 1000);
 }
 
 // Submit answers to backend
