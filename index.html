@@ -357,70 +357,7 @@
             transition: color 0.3s ease;
         }
 
-        /* Game mode selection */
-        .mode-selection {
-            margin-bottom: 30px;
-        }
-
-        .mode-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .mode-options {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .mode-option {
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            min-width: 180px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mode-option:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .mode-option.selected {
-            background: var(--selection-gradient);
-            border: 1px solid var(--selection-border);
-            box-shadow: var(--selection-shadow);
-            color: var(--selection-text);
-        }
-
-        .mode-option.selected::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(to right, #3494e6, #87CEEB);
-        }
-
-        .mode-option.selected .mode-icon,
-        .mode-option.selected .option-title,
-        .mode-option.selected p {
-            color: var(--selection-text);
-        }
-
-        .mode-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--text-light);
-            transition: color 0.3s ease;
-        }
-
+        
         /* Lobby screen enhancements */
         .lobby-screen {
             max-width: 800px;
@@ -578,65 +515,6 @@
             transform: translateY(-1px);
         }
 
-        /* Team assignment in lobby */
-        .team-assignment {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .team-title {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .team-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .team-item {
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-        }
-
-        .team-red {
-            background: rgba(255, 0, 0, 0.15);
-            border-left: 4px solid rgba(255, 0, 0, 0.6);
-        }
-
-        .team-blue {
-            background: rgba(0, 0, 255, 0.15);
-            border-left: 4px solid rgba(0, 0, 255, 0.6);
-        }
-
-        .team-green {
-            background: rgba(0, 255, 0, 0.15);
-            border-left: 4px solid rgba(0, 255, 0, 0.6);
-        }
-
-        .team-yellow {
-            background: rgba(255, 255, 0, 0.15);
-            border-left: 4px solid rgba(255, 255, 0, 0.6);
-        }
-
-        .team-selector {
-            display: flex;
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .team-btn {
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            cursor: pointer;
-        }
-
         /* Loading states */
         .loading {
             display: inline-flex;
@@ -769,21 +647,6 @@
             border: 1px solid rgba(52, 148, 230, 0.5);
         }
 
-        /* Team leaderboard styles */
-        .team-leaderboard-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            border-radius: 10px;
-            margin-bottom: 8px;
-        }
-
-        .team-score {
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
         /* Results screen */
         .results-screen {
             width: 100%;
@@ -862,33 +725,6 @@
             margin: 0 auto;
         }
 
-        /* Team results styles */
-        .team-results {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 30px 0;
-        }
-
-        .team-result-card {
-            width: 200px;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .team-result-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .team-result-score {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
         /* Connection status */
         .connection-status {
             position: fixed;
@@ -935,6 +771,54 @@
             margin-top: 30px;
         }
 
+        /* Enhanced Create Quiz UI styles */
+        .setup-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin-top: 20px;
+        }
+        .setup-step {
+            background: rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 18px 24px;
+            box-shadow: 0 2px 12px rgba(52,148,230,0.08);
+        }
+        .step-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .step-number {
+            background: linear-gradient(90deg,#3494e6,#87CEEB);
+            color: #fff;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        #host-name-input {
+            width: 100%;
+            max-width: 320px;
+            margin-top: 8px;
+            font-size: 1rem;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255,255,255,0.18);
+            color: #222;
+        }
+        #host-name-input:focus {
+            outline: 2px solid #3494e6;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 900px) {
             .quiz-container {
@@ -964,9 +848,6 @@
                 flex-direction: column;
             }
             
-            .mode-options {
-                flex-direction: column;
-            }
             
             .podium {
                 height: auto;
@@ -987,10 +868,7 @@
                 grid-template-columns: 1fr;
             }
             
-            .team-results {
-                flex-direction: column;
-                align-items: center;
-            }
+           
         }
     </style>
 </head>
@@ -1059,68 +937,65 @@
             <section id="quiz-setup-screen" class="quiz-setup glass-card hidden">
                 <h2 class="setup-title">Create a New Quiz</h2>
                 
-                <!-- Game Mode Selection -->
-                <div class="mode-selection">
-                    <h3 class="mode-title">Select Game Mode</h3>
-                    <div class="mode-options">
-                        <div class="mode-option glass-card selected" data-mode="individual">
-                            <div class="mode-icon"><i class="fas fa-user"></i></div>
-                            <h3 class="option-title">Individual</h3>
-                            <p>Play on your own</p>
+                <div class="setup-steps">
+                    <!-- Step 1: Select Topic -->
+                    <div class="setup-step">
+                        <h3 class="step-title"><span class="step-number">1</span> Choose a Topic</h3>
+                        <div class="option-grid" id="topic-grid">
+                            <div class="option-card glass-card" data-topic="c">
+                                <div class="option-icon"><i class="fab fa-cuttlefish"></i></div>
+                                <h3 class="option-title">C Basics</h3>
+                                <p>Fundamentals of C programming</p>
+                            </div>
+                            <div class="option-card glass-card" data-topic="java">
+                                <div class="option-icon"><i class="fab fa-java"></i></div>
+                                <h3 class="option-title">Java Basics</h3>
+                                <p>Core Java concepts</p>
+                            </div>
+                            <div class="option-card glass-card" data-topic="python">
+                                <div class="option-icon"><i class="fab fa-python"></i></div>
+                                <h3 class="option-title">Python Basics</h3>
+                                <p>Python programming fundamentals</p>
+                            </div>
+                            <div class="option-card glass-card" data-topic="network">
+                                <div class="option-icon"><i class="fas fa-network-wired"></i></div>
+                                <h3 class="option-title">Computer Networks</h3>
+                                <p>Networking basics and protocols</p>
+                            </div>
                         </div>
-                        <div class="mode-option glass-card" data-mode="team">
-                            <div class="mode-icon"><i class="fas fa-users"></i></div>
-                            <h3 class="option-title">Team Mode</h3>
-                            <p>Play in teams</p>
+                    </div>
+                    
+                    <!-- Step 2: Select Number of Questions -->
+                    <div class="setup-step">
+                        <h3 class="step-title"><span class="step-number">2</span> Number of Questions</h3>
+                        <div class="option-grid" id="question-count-grid">
+                            <div class="option-card glass-card" data-count="5">
+                                <div class="option-icon"><i class="fas fa-list-ol"></i></div>
+                                <h3 class="option-title">5 Questions</h3>
+                                <p>Quick quiz</p>
+                            </div>
+                            <div class="option-card glass-card" data-count="10">
+                                <div class="option-icon"><i class="fas fa-list-ol"></i></div>
+                                <h3 class="option-title">10 Questions</h3>
+                                <p>Standard challenge</p>
+                            </div>
+                            <div class="option-card glass-card" data-count="15">
+                                <div class="option-icon"><i class="fas fa-list-alt"></i></div>
+                                <h3 class="option-title">15 Questions</h3>
+                                <p>Extended challenge</p>
+                            </div>
+                            <div class="option-card glass-card" data-count="20">
+                                <div class="option-icon"><i class="fas fa-list-alt"></i></div>
+                                <h3 class="option-title">20 Questions</h3>
+                                <p>Comprehensive challenge</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <h3 class="text-center mt-20">Select Topic</h3>
-                <div class="option-grid" id="topic-grid">
-                    <div class="option-card glass-card" data-topic="c">
-                        <div class="option-icon"><i class="fab fa-cuttlefish"></i></div>
-                        <h3 class="option-title">C Basics</h3>
-                        <p>Fundamentals of C programming</p>
-                    </div>
-                    <div class="option-card glass-card" data-topic="java">
-                        <div class="option-icon"><i class="fab fa-java"></i></div>
-                        <h3 class="option-title">Java Basics</h3>
-                        <p>Core Java concepts</p>
-                    </div>
-                    <div class="option-card glass-card" data-topic="python">
-                        <div class="option-icon"><i class="fab fa-python"></i></div>
-                        <h3 class="option-title">Python Basics</h3>
-                        <p>Python programming fundamentals</p>
-                    </div>
-                    <div class="option-card glass-card" data-topic="network">
-                        <div class="option-icon"><i class="fas fa-network-wired"></i></div>
-                        <h3 class="option-title">Computer Networks</h3>
-                        <p>Networking basics and protocols</p>
-                    </div>
-                </div>
-                
-                <h3 class="text-center mt-30">Number of Questions</h3>
-                <div class="option-grid" id="question-count-grid">
-                    <div class="option-card glass-card" data-count="5">
-                        <div class="option-icon"><i class="fas fa-list-ol"></i></div>
-                        <h3 class="option-title">5 Questions</h3>
-                        <p>Quick quiz</p>
-                    </div>
-                    <div class="option-card glass-card" data-count="10">
-                        <div class="option-icon"><i class="fas fa-list-ol"></i></div>
-                        <h3 class="option-title">10 Questions</h3>
-                        <p>Standard challenge</p>
-                    </div>
-                    <div class="option-card glass-card" data-count="15">
-                        <div class="option-icon"><i class="fas fa-list-alt"></i></div>
-                        <h3 class="option-title">15 Questions</h3>
-                        <p>Extended challenge</p>
-                    </div>
-                    <div class="option-card glass-card" data-count="20">
-                        <div class="option-icon"><i class="fas fa-list-alt"></i></div>
-                        <h3 class="option-title">20 Questions</h3>
-                        <p>Comprehensive challenge</p>
+                    
+                    <!-- Step 3: Enter Your Name -->
+                    <div class="setup-step">
+                        <h3 class="step-title"><span class="step-number">3</span> Your Name</h3>
+                        <input type="text" id="host-name-input" class="glass-input" placeholder="Enter your name" maxlength="20" autocomplete="off" />
                     </div>
                 </div>
                 
@@ -1149,14 +1024,6 @@
                 <h3 class="mt-20">Players in Lobby (<span id="player-count">1</span>)</h3>
                 <div class="player-list" id="players-container">
                     <!-- Players will be added here dynamically -->
-                </div>
-                
-                <!-- Team Assignment Section (only visible in team mode) -->
-                <div id="team-assignment-section" class="team-assignment glass-card hidden">
-                    <h3 class="team-title">Team Assignment</h3>
-                    <div class="team-list" id="team-list">
-                        <!-- Team assignments will be added here dynamically -->
-                    </div>
                 </div>
                 
                 <div class="text-center mt-20">
@@ -1218,19 +1085,6 @@
                     </div>
                 </div>
                 
-                <!-- Team Results -->
-                <div id="team-results" class="hidden">
-                    <h3 class="mt-20">Team Results</h3>
-                    <div class="team-results" id="team-results-container">
-                        <!-- Team results will be added here dynamically -->
-                    </div>
-                    
-                    <h3 class="mt-30">Team Members</h3>
-                    <div class="final-leaderboard" id="team-members-container">
-                        <!-- Team members will be added here dynamically -->
-                    </div>
-                </div>
-                
                 <div class="text-center mt-30">
                     <button id="back-to-home-final-btn" class="glass-button">
                         <i class="fas fa-home"></i> Back to Home
@@ -1283,6 +1137,7 @@ const joinErrorMessage = document.getElementById('join-error-message');
 const joinSuccessMessage = document.getElementById('join-success-message');
 const joinErrorText = document.getElementById('join-error-text');
 const joinSuccessText = document.getElementById('join-success-text');
+const hostNameInput = document.getElementById('host-name-input');
 
 // Navigation
 createQuizBtn.onclick = () => {
@@ -1629,14 +1484,17 @@ document.querySelectorAll('#question-count-grid .option-card').forEach(card => {
     };
 });
 
+
 // Enable "Create Room" button only if both selected
 function checkSelections() {
-    if (selectedTopic && selectedQuestionCount) {
+    if (selectedTopic && selectedQuestionCount && hostNameInput.value.trim().length > 0) {
         createRoomBtn.disabled = false;
     } else {
         createRoomBtn.disabled = true;
     }
 }
+
+hostNameInput.addEventListener('input', checkSelections);
 
 // Utility
 function showError(msg) {
